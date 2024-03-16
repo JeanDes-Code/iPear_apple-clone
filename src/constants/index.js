@@ -15,7 +15,7 @@ export const hightlightsSlides = [
   {
     id: 1,
     textLists: [
-      'Enter P17 Pro.',
+      'Enter A17 Pro.',
       'Game‑changing chip.',
       'Groundbreaking performance.',
     ],
