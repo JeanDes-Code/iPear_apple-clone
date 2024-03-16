@@ -5,27 +5,28 @@ import { ScrollTrigger } from 'gsap/all';
 
 import { rightImg, watchImg } from '../utils';
 import VideoCarousel from './video-carousel';
-
-gsap.registerPlugin(ScrollTrigger);
+import { animateWithGsap } from '../utils/animations';
 
 const Highlights = () => {
   useGSAP(() => {
-    gsap.to('#title', {
+    animateWithGsap('#title', {
+      y: 0,
+      opacity: 1,
       scrollTrigger: {
         trigger: '#title',
-        toggleActions: 'restart none none none',
+        toggleActions: 'restart reverse restart reverse',
+        start: 'top 85%',
       },
-      opacity: 1,
-      y: 0,
     });
-    gsap.to('.link', {
+    animateWithGsap('.link', {
+      y: 0,
+      opacity: 1,
+      duration: 1,
       scrollTrigger: {
         trigger: '.link',
-        toggleActions: 'restart none none none',
+        toggleActions: 'restart reverse restart reverse',
+        start: 'top 85%',
       },
-      opacity: 1,
-      y: 0,
-      duration: 1,
       stagger: 0.25,
     });
   }, []);

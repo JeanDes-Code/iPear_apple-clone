@@ -5,8 +5,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 import { pauseImg, playImg, replayImg } from '../utils';
 import { hightlightsSlides } from '../constants';
-
-gsap.registerPlugin(ScrollTrigger);
+import { animateWithGsap } from '../utils/animations';
 
 const VideoCarousel = () => {
   const videoRef = useRef([]);
@@ -34,11 +33,22 @@ const VideoCarousel = () => {
     });
 
     // video animation to play the video when it is in the view
-    gsap.to('#video', {
-      scrollTrigger: {
-        trigger: '#video',
-        toggleActions: 'restart none none none',
-      },
+    // gsap.to('#video', {
+    //   scrollTrigger: {
+    //     trigger: '#video',
+    //     toggleActions: 'restart reverse restart reverse',
+    //     start: 'top 85%',
+    //   },
+    //   onComplete: () => {
+    //     setVideo((pre) => ({
+    //       ...pre,
+    //       startPlay: true,
+    //       isPlaying: true,
+    //     }));
+    //   },
+    // });
+
+    animateWithGsap('#video', {
       onComplete: () => {
         setVideo((pre) => ({
           ...pre,
