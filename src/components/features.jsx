@@ -1,8 +1,12 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import React, { useRef } from 'react';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
 import { animateWithGsap } from '../utils/animations';
 import { explore1Img, explore2Img, exploreVideo } from '../utils';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Features = () => {
   const videoRef = useRef();
@@ -94,7 +98,7 @@ const Features = () => {
                   />
                 </div>
               </div>
-              <div className='feature-text-container mb-32'>
+              <div className='feature-text-container'>
                 <div className='flex-1 flex-center'>
                   <p className='feature-text g_text'>
                     iPear 15 Pro is

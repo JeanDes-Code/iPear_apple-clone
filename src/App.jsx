@@ -6,6 +6,8 @@ import Hero from './components/hero';
 import Highlights from './components/highlights';
 import Model from './components/model';
 import Features from './components/features';
+import Chip from './components/chip';
+import Footer from './components/footer';
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
       <Highlights />
       <Model />
       <Features />
+      <Chip />
+      <Footer />
     </div>
   );
 };
