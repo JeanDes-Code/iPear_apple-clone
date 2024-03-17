@@ -5,17 +5,20 @@ import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
 import { useEffect, useRef, useState } from 'react';
 
-import { yellowImg } from '../utils';
+import { titaniumImg, yellowImg } from '../utils';
 import { models, sizes } from '../constants';
 import ModelView from './model-view';
 import { animateWithGsapTimeline } from '../utils/animations';
+import WebGLNotSupported from './webGL-not-supported';
 
 const Model = () => {
+  const [webGLSupported, setWebGLSupported] = useState(false);
   const [size, setSize] = useState('small');
   const [model, setModel] = useState({
     title: 'iPear 15 Pro in Natural Titanium',
     color: ['#8F8A81', '#FFE7B9', '#6F6C64'],
     img: yellowImg,
+    placeholderImage: titaniumImg,
   });
 
   // camera control for the model view
@@ -31,6 +34,14 @@ const Model = () => {
   const [largeRotation, setLargeRotation] = useState(0);
 
   const tl = gsap.timeline();
+
+  useEffect(() => {
+    const testCanvas = document.createElement('canvas');
+    const gl =
+      testCanvas.getContext('webgl') ||
+      testCanvas.getContext('experimental-webgl');
+    setWebGLSupported(!!gl);
+  }, []);
 
   useEffect(() => {
     if (size === 'large') {
@@ -51,6 +62,27 @@ const Model = () => {
   useGSAP(() => {
     gsap.to('#heading', { y: 0, opacity: 1 });
   }, []);
+
+  if (webGLSupported) {
+    return (
+      <section className='common-padding'>
+        <div className='screen-max-width'>
+          <h1
+            id='heading'
+            className='section-heading'
+          >
+            Take a closer look.
+          </h1>
+
+          <WebGLNotSupported
+            model={model}
+            setModel={setModel}
+            models={models}
+          />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className='common-padding'>

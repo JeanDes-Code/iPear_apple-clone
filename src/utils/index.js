@@ -29,6 +29,11 @@ import explore2 from '/assets/images/explore2.jpg';
 import chip from '/assets/images/chip.jpeg';
 import frame from '/assets/images/frame.png';
 
+import titanium from '/assets/images/titanium.jpg';
+import titaniumBlue from '/assets/images/blue_titanium.jpg';
+import titaniumBlack from '/assets/images/black_titanium.jpg';
+import titaniumWhite from '/assets/images/white_titanium.jpg';
+
 export const heroVideo = hmv;
 export const smallHeroVideo = smallmv;
 export const highlightFirstVideo = highlightFirstmv;
@@ -37,6 +42,11 @@ export const highlightThirdVideo = highlightThirdmv;
 export const highlightFourthVideo = highlightFourthmv;
 export const exploreVideo = exploremv;
 export const frameVideo = framemv;
+
+export const titaniumImg = titanium;
+export const titaniumBlueImg = titaniumBlue;
+export const titaniumBlackImg = titaniumBlack;
+export const titaniumWhiteImg = titaniumWhite;
 
 export const pearImg = pear;
 export const searchImg = search;
