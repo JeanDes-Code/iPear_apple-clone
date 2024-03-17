@@ -66,7 +66,14 @@ const Hero = () => {
         className='flex flex-col items-center opacity-0 translate-y-20'
       >
         <a
-          href='#highlights'
+          href='#'
+          onClick={(e) => {
+            e.preventDefault();
+            const highlightsSection = document.getElementById('highlights');
+            if (highlightsSection) {
+              highlightsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           className='btn'
         >
           Buy
