@@ -36,11 +36,23 @@ const Model = () => {
   const tl = gsap.timeline();
 
   useEffect(() => {
-    const testCanvas = document.createElement('canvas');
-    const gl =
-      testCanvas.getContext('webgl') ||
-      testCanvas.getContext('experimental-webgl');
-    setWebGLSupported(!!gl);
+    // Define a simple regex to test for mobile and tablet user agents
+    const mobileAndTabletRegex =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+
+    const isMobileOrTablet = mobileAndTabletRegex.test(navigator.userAgent);
+
+    // You can adjust this width based on your needs or testing
+    const MOBILE_MAX_WIDTH = 768; // Typical screen width to consider as mobile/tablet
+
+    const screenWidth = window.innerWidth;
+
+    // Use both screen width and userAgent to determine if WebGL should be supported
+    if (isMobileOrTablet || screenWidth <= MOBILE_MAX_WIDTH) {
+      setWebGLSupported(false);
+    } else {
+      setWebGLSupported(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -63,7 +75,7 @@ const Model = () => {
     gsap.to('#heading', { y: 0, opacity: 1 });
   }, []);
 
-  if (webGLSupported) {
+  if (!webGLSupported) {
     return (
       <section className='common-padding'>
         <div className='screen-max-width'>
